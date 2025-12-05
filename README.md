@@ -3,6 +3,17 @@
 **FoodBridge is a purpose-built, full-stack web platform engineered to combat food waste by intelligently connecting donors (businesses, households) with recipient organizations (food banks, shelters). It features geospatial matching, a modern React/Tailwind frontend, and a Python microservice utilising the Gemini API for AI-assisted image analysis of food quality and type.**
 
 ---
+## 📋 Table of Contents
+
+- [💡 Project Goals and Purpose](#-project-goals-and-purpose)
+- [✨ Core Features](#-core-features)
+- [💻 Technology Stack](#-technology-stack)
+- [🧠 Architecture & Data Flow](#-architecture--data-flow)
+- [🛠️ Getting Started](#%EF%B8%8F-getting-started)
+- [🔑 Key Files & Where To Look](#-key-files--where-to-look)
+- [🚀 Roadmap & Future Scope](#-roadmap--future-scope)
+- [📄 License](#-license)
+---
 
 ## Project Goals and Purpose
 
@@ -109,7 +120,7 @@ python food.py
 # The service listens on port 5001
 ```
 
-### 1. Run the Frontend (React Client)
+### 2. Run the Frontend (React Client)
 
 ```bash
 # 1. Navigate back to the project root
@@ -130,3 +141,11 @@ npm run dev
 | **Image Upload** | `src/pages/post-surplus-food/components/PhotoUpload.jsx` | Client-side component handling image state, submission to Flask, and result display. |
 | **Database Client** | `src/supabaseClient.js` | Configuration and setup for Supabase (Auth, DB, Storage). |
 | **Matching** | `src/utils/nearestNeighborMatcher.js` | Geospatial logic for distance calculation and matching. |
+
+---
+
+## 🚀 Roadmap & Future Scope
+
+* **Advanced Matching:** Implement multi-stop route optimization (TSP-style algorithms) for drivers and batch matching based on capacity constraints.
+* **Async Processing:** Implement background processing for image analysis (upload to Supabase Storage first, then trigger AI analysis in an async worker) to make the posting flow non-blocking.
+* **Security Focus:** Integrate robust auditing, automated moderation, and stronger data access controls via Supabase RLS (Row-Level Security).
