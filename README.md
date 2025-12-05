@@ -5,8 +5,8 @@
 ---
 ## 📋 Table of Contents
 
-- [💡 Project Goals and Purpose](#-project-goals-and-purpose)
-- [✨ Core Features](#-core-features)
+- [📂 Project Goals and Purpose](#-project-goals-and-purpose)
+- [📂 Core Features](#-core-features)
 - [💻 Technology Stack](#-technology-stack)
 - [🧠 Architecture & Data Flow](#-architecture--data-flow)
 - [🛠️ Getting Started](#%EF%B8%8F-getting-started)
@@ -15,7 +15,7 @@
 - [📄 License](#-license)
 ---
 
-## Project Goals and Purpose
+## 📂 Project Goals and Purpose
 
 FoodBridge's primary mission is to reduce food insecurity and environmental waste by creating a highly efficient, low-friction digital platform for food redistribution.
 
@@ -27,7 +27,7 @@ FoodBridge's primary mission is to reduce food insecurity and environmental wast
 
 ---
 
-## Core Features
+## 📂 Core Features
 
 | Feature Category | Description | Key Files/Technologies |
 | :--- | :--- | :--- |
