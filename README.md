@@ -1,24 +1,23 @@
-# 🌉 FoodBridge: Connecting Foodless
+# FoodBridge: Connecting Foodless
 
 **FoodBridge is a purpose-built, full-stack web platform engineered to combat food waste by intelligently connecting donors (businesses, households) with recipient organizations (food banks, shelters). It features geospatial matching, a modern React/Tailwind frontend, and a Python microservice utilising the Gemini API for AI-assisted image analysis of food quality and type.**
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
-- [💡 Project Goals and Purpose](#-project-goals-and-purpose)
-- [✨ Core Features](#-core-features)
-- [💻 Technology Stack](#-technology-stack)
-- [🧠 Architecture & Data Flow](#-architecture--data-flow)
-- [📁 Project Structure](#-project-structure)
-- [🛠️ Getting Started](#%EF%B8%8F-getting-started)
-- [🔑 Key Files & Where To Look](#-key-files--where-to-look)
-- [🚀 Roadmap & Future Scope](#-roadmap--future-scope)
-- [📄 License](#-license)
+- [Project Goals and Purpose](#-project-goals-and-purpose)
+- [Core Features](#-core-features)
+- [Technology Stack](#-technology-stack)
+- [Architecture & Data Flow](#-architecture--data-flow)
+- [Project Structure](#-project-structure)
+- [Getting Started](#%EF%B8%8F-getting-started)
+- [Key Files & Where To Look](#-key-files--where-to-look)
+- [Roadmap & Future Scope](#-roadmap--future-scope)
 
 ---
 
-## 💡 Project Goals and Purpose
+## Project Goals and Purpose
 
 FoodBridge's primary mission is to reduce food insecurity and environmental waste by creating a highly efficient, low-friction digital platform for food redistribution.
 
@@ -30,7 +29,7 @@ FoodBridge's primary mission is to reduce food insecurity and environmental wast
 
 ---
 
-## ✨ Core Features
+## Core Features
 
 | Feature Category | Description | Key Files/Technologies |
 | :--- | :--- | :--- |
@@ -57,7 +56,7 @@ FoodBridge's primary mission is to reduce food insecurity and environmental wast
 
 ---
 
-## 🧠 Architecture & Data Flow
+## Architecture & Data Flow
 
 FoodBridge operates on a decoupled architecture, ensuring that the heavy lifting (like AI processing) is offloaded to a dedicated service, while the client remains fast and responsive.
 
@@ -75,7 +74,7 @@ FoodBridge operates on a decoupled architecture, ensuring that the heavy lifting
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 react_app/
@@ -95,7 +94,7 @@ react_app/
 ```
 ---
 
-## 🛠️ Getting Started
+## Getting Started
 
 To run the full-stack application, you must start both the React client and the Python backend simultaneously.
 
