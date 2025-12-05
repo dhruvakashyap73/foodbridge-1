@@ -1,80 +1,79 @@
-# 🌉 FoodBridge
+# 🌉 FoodBridge: Connecting Foodless
 
-**FoodBridge is a modern full-stack web application engineered to [Insert Project Mission Here, e.g., connect surplus food from businesses with local charities or users, thereby reducing food waste].**
+**FoodBridge is a purpose-built, full-stack web platform engineered to combat food waste by intelligently connecting donors (businesses, households) with recipient organizations (food banks, shelters). It features geospatial matching, a modern React/Tailwind frontend, and a Python microservice utilising the Gemini API for AI-assisted image analysis of food quality and type.**
 
-It features a high-performance React frontend and a scalable backend API, utilizing advanced state management and data visualization techniques.
-
-***
+---
 
 ## 📋 Table of Contents
 
-- [💡 Aim](#-aim)
-- [🎯 Objectives](#-objectives)
-- [🌱 Motivation](#-motivation)
-- [💻 Technologies Used](#-technologies-used)
-- [🚀 Frontend Architecture](#-frontend-architecture)
-- [🛠️ Getting Started](#%EF%B8%8F-getting-started)
+- [💡 Project Goals and Purpose](#-project-goals-and-purpose)
+- [✨ Core Features](#-core-features)
+- [💻 Technology Stack](#-technology-stack)
+- [🧠 Architecture & Data Flow](#-architecture--data-flow)
 - [📁 Project Structure](#-project-structure)
-- [📈 Conclusion & Future Scope](#-conclusion--future-scope)
+- [🛠️ Getting Started](#%EF%B8%8F-getting-started)
+- [🔑 Key Files & Where To Look](#-key-files--where-to-look)
+- [🚀 Roadmap & Future Scope](#-roadmap--future-scope)
 - [📄 License](#-license)
 
-***
+---
 
-## 💡 Aim
+## 💡 Project Goals and Purpose
 
-To develop and deploy a robust, user-friendly platform that serves as a digital **bridge** between food sources (e.g., restaurants, grocery stores) and recipients (e.g., individuals, NGOs), focusing on efficiency, responsiveness, and reducing food wastage through timely coordination.
+FoodBridge's primary mission is to reduce food insecurity and environmental waste by creating a highly efficient, low-friction digital platform for food redistribution.
 
-***
+### Core Objectives:
+1.  **Reduce Friction:** Provide a quick, low-friction interface for donors to post surplus food.
+2.  **Maximize Match Quality:** Use **nearest-neighbor spatial matching** to connect donors and recipients based on proximity and need.
+3.  **Enhance Safety & Efficiency:** Leverage **AI-assisted image analysis** to instantly assess the type, freshness, and deliverability of donated food, improving safety and routing.
+4.  **Provide Transparency:** Offer role-specific dashboards to show active donations, match history, and overall impact.
 
-## 🎯 Objectives
+---
 
-* Implement a full-stack architecture with clear separation between the React client and the backend API.
-* Utilize **Redux Toolkit** for predictable and scalable global state management across complex workflows (e.g., donation tracking, user profiles).
-* Design a modern, fully responsive user interface using **TailwindCSS** for seamless experience on mobile and desktop devices.
-* Integrate **D3.js** and **Recharts** for visualizing key metrics such as total food saved, user impact, and donation trends.
-* Ensure efficient navigation using **React Router v6** and optimize developer workflow with **Vite**.
+## ✨ Core Features
 
-***
-
-## 🌱 Motivation
-
-In a world facing both high rates of food insecurity and significant food waste, a digital solution is essential to optimize the distribution pipeline. FoodBridge is motivated by the need for a reliable, transparent, and fast communication platform that simplifies the donation process, making it easier for organizations to connect and ensure excess food reaches those in need quickly and safely.
-
-***
-
-## 💻 Technologies Used
-
-| Category | Technology | Description |
+| Feature Category | Description | Key Files/Technologies |
 | :--- | :--- | :--- |
-| **Frontend Framework** | **React 18** | Modern component-based UI development. |
-| **Build Tool** | **Vite** | Lightning-fast development server and optimized build process. |
-| **Styling** | **TailwindCSS** | Utility-first framework for rapid responsive design. |
-| **State Management** | **Redux Toolkit** | Centralized, scalable state logic. |
-| **Routing** | **React Router v6** | Declarative routing for a Single Page Application (SPA). |
-| **Data Visualization** | **D3.js / Recharts** | Powerful libraries for chart and graph rendering. |
-| **Animation** | **Framer Motion** | Used for smooth, professional UI transitions and animations. |
-| **Backend** | *Flask for routing* | Dedicated API service layer. |
-| **Database** | *PostgreSQL via Superbase* | Data persistence and management. |
+| **Donor Posting Flow** | Donors create a post with details and photos of surplus food. This flow is designed to be quick and low-friction. | `post-surplus-food/`, `PostFoodDonation.jsx` |
+| **AI Image Analysis** | When a photo is uploaded, the frontend calls a Python microservice to analyze food type, freshness, and deliverability using the **Gemini Vision Model**. | `PhotoUpload.jsx`, `backend/food.py` |
+| **Intelligent Matching** | A spatial matching utility computes distances to rank and suggest the best local donation matches for recipients. | `nearestNeighborMatcher.js` |
+| **User Dashboards** | Role-specific views showing active donations, recent matches, and quick actions. Features an AI matching score component. | `donor-dashboard/`, `recipient-dashboard/` |
+| **Mapping & Routing** | Uses **Leaflet** and `react-leaflet` to display donation locations and provide route context for pickups. | `Leaflet`, `react-leaflet` |
+| **Storage & DB** | Utilizes **Supabase** for user authentication, a **Postgres-backed database**, and object storage for all images. | `supabaseClient.js`, `@supabase/supabase-js` |
 
-***
+---
 
-## 🚀 Frontend Architecture
+## 💻 Technology Stack
 
-The frontend is designed for speed and maintainability, focusing on the following principles:
+| Component | Technology | Details |
+| :--- | :--- | :--- |
+| **Frontend** | **React (Vite)** | Single-Page Application (SPA) with lightning-fast tooling. |
+| **Styling** | **Tailwind CSS** | Utility-first styling for responsive design. |
+| **Backend API** | **Python + Flask** | Lightweight microservice for image analysis. |
+| **Artificial Intelligence**| **Google Generative AI (Gemini)** | Used for multimodal vision analysis of food images. |
+| **BaaS / DB** | **Supabase (Postgres)** | Hosted DB, Auth, and Object Storage. |
+| **Mapping** | **Leaflet + react-leaflet** | Geospatial data visualization and mapping. |
+| **State/UX** | **Redux Toolkit, Framer Motion, react-hook-form** | Advanced state management, animations, and efficient form handling. |
 
-### Component-Based Design
-The UI is composed of reusable components (`src/components/`) managed by page-level containers (`src/pages/`).
+---
 
-### Declarative Styling
-All styling leverages Tailwind CSS utilities, with custom configurations managed in `tailwind.config.js`, promoting consistent and easy-to-read CSS.
+## 🧠 Architecture & Data Flow
 
-### Robust Form Handling
-**React Hook Form** is implemented across the application for managing complex user inputs, validation, and submission, drastically improving form performance and developer experience.
+FoodBridge operates on a decoupled architecture, ensuring that the heavy lifting (like AI processing) is offloaded to a dedicated service, while the client remains fast and responsive.
 
-***
+### Data Flow for Donation Posting (Including AI Analysis)
 
-## 📁 Project Structure
+1.  **Image Upload:** A Donor uses `PhotoUpload.jsx` to select an image.
+2.  **AI Service Call:** The frontend sends the image to the **Flask Microservice** at `http://127.0.0.1:5001/analyze`.
+3.  **AI Analysis:** The Flask service (`backend/food.py`) uses the **Gemini API** to analyze the image and return a structured JSON response describing `food_type`, `freshness`, and `deliverability`.
+4.  **Database Storage:** The frontend compiles the donation details and saves the complete record to the **Postgres Database** via the Supabase client.
 
+### Behavior & Fault Tolerance
+
+* **Gemini Key:** The backend (`food.py`) checks for the `GEMINI_API_KEY`. If the key is missing, it returns safe, pre-defined demo results, enabling development without a live key.
+* **Network Failure:** The frontend component `PhotoUpload.jsx` is coded to handle network errors (e.g., `ECONNREFUSED` or `Network Error`) gracefully by displaying local demo analysis data when the backend service is unavailable.
+
+---
 
 ## 📁 Project Structure
 
@@ -94,55 +93,36 @@ react_app/
 ├── tailwind.config.js  # Tailwind CSS configuration
 └── vite.config.js      # Vite configuration
 ```
+---
 
-## 🧩 Adding Routes
+## 🛠️ Getting Started
 
-To add new routes to the application, update the `Routes.jsx` file:
+To run the full-stack application, you must start both the React client and the Python backend simultaneously.
 
-```jsx
-import { useRoutes } from "react-router-dom";
-import HomePage from "pages/HomePage";
-import AboutPage from "pages/AboutPage";
+### Prerequisites
 
-const ProjectRoutes = () => {
-  let element = useRoutes([
-    { path: "/", element: <HomePage /> },
-    { path: "/about", element: <AboutPage /> },
-    // Add more routes as needed
-  ]);
+* **Node.js** & npm
+* **Python 3** & pip
+* A **Supabase Project** (required for DB/Auth/Storage)
+* A **Gemini API Key** (required for real AI analysis)
 
-  return element;
-};
-```
-
-## 🎨 Styling
-
-This project uses Tailwind CSS for styling. The configuration includes:
-
-- Forms plugin for form styling
-- Typography plugin for text styling
-- Aspect ratio plugin for responsive elements
-- Container queries for component-specific responsive design
-- Fluid typography for responsive text
-- Animation utilities
-
-## 📱 Responsive Design
-
-The app is built with responsive design using Tailwind CSS breakpoints.
-
-
-## 📦 Deployment
-
-Build the application for production:
+### 1. Run the Backend (AI Service)
 
 ```bash
-npm run build
+# 1. Navigate to the backend folder
+cd backend
+# 2. Create and activate a virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+# 3. Install dependencies
+pip install -r requirements.txt
+```
+Environment Variables: Create a .env file in the backend/ directory and add your key:
+GEMINI_API_KEY=your_real_key_here
+
+Run the Service:
+```bash
+python food.py
+# The service listens on port 5001
 ```
 
-## 🙏 Acknowledgments
-
-- Built with [Rocket.new](https://rocket.new)
-- Powered by React and Vite
-- Styled with Tailwind CSS
-
-Built with ❤️ on Rocket.new
