@@ -16,6 +16,7 @@ load_dotenv('../.env')  # Also try looking for .env in parent directory
 
 app = Flask(__name__)
 CORS(app)
+#cross origin resource sharing
 
 # --- Configuration ---
 # Get API key from environment variable
